@@ -9,7 +9,3 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
 }
-
-.task-done {
-    text-decoration: line-through;
-}

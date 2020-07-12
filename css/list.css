@@ -1,0 +1,45 @@
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list__item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.list__button {
+    width: 25px;
+    height: 25px;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.list__button--done {
+    margin-right: 10px;
+    background-color: green;
+    color: #fff;
+}
+
+.list__button--remove {
+    margin-left: 10px;
+    background-color: crimson;
+    background-image: url("../images/delete.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.list__taskContent {
+    flex-basis: 690px;
+    flex-shrink: 1;
+}
+
+.list__taskContent--done {
+    text-decoration: line-through;
+}
