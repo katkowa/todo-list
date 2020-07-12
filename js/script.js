@@ -60,15 +60,22 @@
         bindEvents();
     }
 
+    const clearAndGetFocusOnInputField = (inputField) => {
+        inputField.value = "";
+        inputField.focus();
+    }
+
     const onFormSubmit = () => {
         event.preventDefault();
 
-        const taskContent = document.querySelector(".js-taskInput").value.trim();
+        const taskInput = document.querySelector(".js-taskInput")
+        const taskContent = taskInput.value.trim();
         if (taskContent === "") {
             return;
         }
 
         addNewTask(taskContent);
+        clearAndGetFocusOnInputField(taskInput);
     }
 
     const init = () => {
