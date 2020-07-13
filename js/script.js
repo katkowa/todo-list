@@ -35,25 +35,24 @@
     }
 
     const render = () => {
-        let htmlString = "";
+        let tasksListElementContent = "";
         for (const task of tasks) {
-            htmlString += `
+            tasksListElementContent += `
             <li
-            class=\"list__item\">
-                <button class="list__button list__button--done js-done">${task.done ? "✔" : ""}</button>
-                <span class="list__taskContent${task.done ? " list__taskContent--done\"" : "\""}">${task.content}</span>
-                <button class="list__button list__button--remove js-remove"></button>
+            class=\"tasksList__item\">
+                <button class="tasksList__button tasksList__button--toggleDone js-done">
+                    ${task.done ? "✔" : ""}
+                </button>
+                <span class="tasksList__taskContent${task.done ? " tasksList__taskContent--done\"" : "\""}">
+                    ${task.content}
+                </span>
+                <button class="tasksList__button tasksList__button--remove js-remove"></button>
             </li>
             `;
         }
 
-        document.querySelector(".js-tasksList").innerHTML = htmlString;
+        document.querySelector(".js-tasksList").innerHTML = tasksListElementContent;
         bindEvents();
-    }
-
-    const clearAndGetFocusOnInputField = (inputField) => {
-        inputField.value = "";
-        inputField.focus();
     }
 
     const onFormSubmit = () => {
@@ -61,12 +60,13 @@
 
         const taskInput = document.querySelector(".js-taskInput")
         const taskContent = taskInput.value.trim();
-        if (taskContent === "") {
-            return;
+
+        if (taskContent !== "") {
+            addNewTask(taskContent);
+            taskInput.value = "";
         }
 
-        addNewTask(taskContent);
-        clearAndGetFocusOnInputField(taskInput);
+        taskInput.focus();
     }
 
     const init = () => {

@@ -13,9 +13,18 @@
 .form__input {
     padding: 10px;
 }
-
+ 
 .form__button {
     color: #fff;
     background-color: teal;
     padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.form__button:hover {
+    background-color: #009696;
+}
+
+.form__button:active {
+    background-color: #00afaf;
 }

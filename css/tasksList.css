@@ -1,0 +1,52 @@
+.tasksList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tasksList__item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tasksList__button {
+    width: 25px;
+    height: 25px;
+    border-radius: 0;
+    border: 1px solid #ddd;
+}
+
+.tasksList__button--toggleDone {
+    background-color: green;
+    color: #fff;
+}
+
+.tasksList__button--toggleDone:hover {
+    background-color: #00a100;
+}
+
+.tasksList__button--toggleDone:active {
+    background-color: #03b803;
+}
+
+.tasksList__button--remove {
+    background-color: crimson;
+    background-image: url("../images/delete.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tasksList__button--remove:hover {
+    background-color: #d34461;
+}
+
+.tasksList__button--remove:active {
+    background-color: #df667e;
+}
+
+.tasksList__taskContent--done {
+    text-decoration: line-through;
+}
