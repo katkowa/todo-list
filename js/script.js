@@ -1,21 +1,49 @@
 {
-    const tasks = [];
+    let tasks = [];
 
     const addNewTask = (taskContent) => {
-        tasks.push({
-            content: taskContent
-        });
+        tasks = [
+            ...tasks, 
+            { content: taskContent }
+        ];
         render();
     }
 
     const removeTask = (taskIndex) => {
-        tasks.splice(taskIndex, 1);
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+            ...tasks.slice(taskIndex + 1),
+        ];
         render();
     }
 
     const toggleTaskDone = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done;
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+            {...tasks[taskIndex], done:!tasks[taskIndex].done},
+            ...tasks.slice(taskIndex + 1),
+        ];
         render();
+    }
+
+    const renderTasksList = () => {
+        let tasksListElementContent = "";
+        for (const task of tasks) {
+            tasksListElementContent += `
+            <li
+            class=\"tasksList__item\">
+                <button class="tasksList__button tasksList__button--toggleDone js-done">
+                    ${task.done ? "✔" : ""}
+                </button>
+                <span class="tasksList__taskContent${task.done ? " tasksList__taskContent--done\"" : "\""}">
+                    ${task.content}
+                </span>
+                <button class="tasksList__button tasksList__button--remove js-remove"></button>
+            </li>
+            `;
+        }
+
+        document.querySelector(".js-tasksList").innerHTML = tasksListElementContent;
     }
 
     const bindEvents = () => {
@@ -35,23 +63,7 @@
     }
 
     const render = () => {
-        let tasksListElementContent = "";
-        for (const task of tasks) {
-            tasksListElementContent += `
-            <li
-            class=\"tasksList__item\">
-                <button class="tasksList__button tasksList__button--toggleDone js-done">
-                    ${task.done ? "✔" : ""}
-                </button>
-                <span class="tasksList__taskContent${task.done ? " tasksList__taskContent--done\"" : "\""}">
-                    ${task.content}
-                </span>
-                <button class="tasksList__button tasksList__button--remove js-remove"></button>
-            </li>
-            `;
-        }
-
-        document.querySelector(".js-tasksList").innerHTML = tasksListElementContent;
+        renderTasksList();
         bindEvents();
     }
 
