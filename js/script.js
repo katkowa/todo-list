@@ -3,7 +3,7 @@
 
     const addNewTask = (taskContent) => {
         tasks = [
-            ...tasks, 
+            ...tasks,
             { content: taskContent }
         ];
         render();
@@ -20,7 +20,7 @@
     const toggleTaskDone = (taskIndex) => {
         tasks = [
             ...tasks.slice(0, taskIndex),
-            {...tasks[taskIndex], done:!tasks[taskIndex].done},
+            { ...tasks[taskIndex], done: !tasks[taskIndex].done },
             ...tasks.slice(taskIndex + 1),
         ];
         render();
@@ -46,7 +46,16 @@
         document.querySelector(".js-tasksList").innerHTML = tasksListElementContent;
     }
 
-    const bindEvents = () => {
+    const renderButtons = () => {
+        if (tasks.length > 0) {
+            document.querySelector(".js-buttons").innerHTML = `
+            <button class="section__button">Ukryj ukończone</button>
+            <button class="section__button">Ukończ wszystkie</button>
+            `;
+        }
+    }
+
+    const bindTaskItemsEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
         removeButtons.forEach((removeButton, index) => {
             removeButton.addEventListener("click", () => {
@@ -64,7 +73,8 @@
 
     const render = () => {
         renderTasksList();
-        bindEvents();
+        renderButtons();
+        bindTaskItemsEvents();
     }
 
     const onFormSubmit = () => {

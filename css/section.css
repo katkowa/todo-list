@@ -6,10 +6,33 @@
 }
 
 .section__header {
-    padding: 20px;
-    margin: 0;
     border-bottom: 2px solid #ddd;
+    display: flex;
+    padding: 20px;
+}
+
+.section__title {
+    margin: 0;
     font-size: 20px;
+    flex-grow: 1;
+}
+
+.section__button {
+    border: 0;
+    background-color: #fff;
+    color:  teal;
+}
+
+.section__button:hover {
+    color: hsl(180, 100%, 35%);
+}
+
+.section__button:active {
+    color: hsl(180, 100%, 45%);
+}
+
+.section__button:focus {
+    outline: 0;
 }
 
 .section__body {
