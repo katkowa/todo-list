@@ -52,7 +52,7 @@
         if (tasks.length > 0) {
             document.querySelector(".js-buttons").innerHTML = `
             <button class="section__button js-hideButton">${isDoneHide ? "Pokaż ukończone" : "Ukryj ukończone"}</button>
-            <button class="section__button js-makeDoneButton">Ukończ wszystkie</button>
+            <button class="section__button js-toggleAllDoneButton">Ukończ wszystkie</button>
             `;
         }
     }
@@ -63,7 +63,15 @@
             hideButton.addEventListener("click", () => {
                 isDoneHide = !isDoneHide;
                 render();
-            })
+            });
+        }
+
+        const toggleAllTasksDoneButton = document.querySelector(".js-toggleAllDoneButton");
+        if (toggleAllTasksDoneButton != null) {
+            toggleAllTasksDoneButton.addEventListener("click", () => {
+                tasks = tasks.map(task => {return {...task, done: true}});
+                render();
+            });
         }
     }
 
