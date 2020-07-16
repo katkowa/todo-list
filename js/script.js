@@ -33,7 +33,7 @@
         for (const task of tasks) {
             tasksListElementContent += `
             <li
-            class=\"tasksList__item${isDoneHide && task.done ? " tasksList__item--hide\"" : "\""}\">
+            class=\"tasksList__item${isDoneHide && task.done ? " tasksList__item--hidden\"" : "\""}\">
                 <button class="tasksList__button tasksList__button--toggleDone js-done">
                     ${task.done ? "✔" : ""}
                 </button>
@@ -51,25 +51,29 @@
     const renderButtons = () => {
         if (tasks.length > 0) {
             document.querySelector(".js-buttons").innerHTML = `
-            <button class="section__button js-hideButton">${isDoneHide ? "Pokaż ukończone" : "Ukryj ukończone"}</button>
-            <button class="section__button js-toggleAllDoneButton"${tasks.every(({ done }) => done === true) ? " disabled" : ""}>Ukończ wszystkie</button>
+            <button class="section__button js-hideDoneTasksButton">
+                ${isDoneHide ? "Pokaż" : "Ukryj"} ukończone
+            </button>
+            <button class="section__button js-toggleAllDoneButton"${tasks.every(({ done }) => done === true) ? " disabled" : ""}>
+                Ukończ wszystkie
+            </button>
             `;
         }
     }
 
     const bindButtonsEvents = () => {
-        const hideButton = document.querySelector(".js-hideButton");
-        if (hideButton != null) {
-            hideButton.addEventListener("click", () => {
+        const hideDoneTasksButton = document.querySelector(".js-hideDoneTasksButton");
+        if (hideDoneTasksButton) {
+            hideDoneTasksButton.addEventListener("click", () => {
                 isDoneHide = !isDoneHide;
                 render();
             });
         }
 
         const toggleAllTasksDoneButton = document.querySelector(".js-toggleAllDoneButton");
-        if (toggleAllTasksDoneButton != null) {
+        if (toggleAllTasksDoneButton) {
             toggleAllTasksDoneButton.addEventListener("click", () => {
-                tasks = tasks.map(task => {return {...task, done: true}});
+                tasks = tasks.map(task => ({ ...task, done: true }));
                 render();
             });
         }

@@ -13,7 +13,7 @@
     border-bottom: 1px solid #ddd;
 }
 
-.tasksList__item--hide {
+.tasksList__item--hidden {
     display: none;
 }
 
