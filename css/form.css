@@ -24,6 +24,7 @@
 
 .form__button:hover {
     background-color: #009696;
+    transform: scale(1.1);
 }
 
 .form__button:active {
