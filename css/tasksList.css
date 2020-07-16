@@ -22,6 +22,7 @@
     height: 25px;
     border-radius: 0;
     border: 1px solid #ddd;
+    transition: 0.5s;
 }
 
 .tasksList__button--toggleDone {
@@ -45,7 +46,7 @@
 }
 
 .tasksList__button--remove:hover {
-    background-color: #d34461;
+    background-color: hsl(348, 83%, 60%);
 }
 
 .tasksList__button--remove:active {

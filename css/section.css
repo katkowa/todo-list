@@ -21,6 +21,7 @@
     border: 0;
     background-color: #fff;
     color:  teal;
+    transition: 0.5s;
 }
 
 .section__button:disabled {
