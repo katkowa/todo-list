@@ -23,11 +23,15 @@
     color:  teal;
 }
 
-.section__button:hover {
+.section__button:disabled {
+    color: #ddd;
+}
+
+.section__button:hover:enabled {
     color: hsl(180, 100%, 35%);
 }
 
-.section__button:active {
+.section__button:active:enabled {
     color: hsl(180, 100%, 45%);
 }
 
