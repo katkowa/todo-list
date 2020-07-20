@@ -40,7 +40,7 @@
                 <span class="tasksList__taskContent${task.done ? " tasksList__taskContent--done\"" : "\""}">
                     ${task.content}
                 </span>
-                <button class="tasksList__button tasksList__button--remove js-remove"></button>
+                <button class="tasksList__button tasksList__button--remove js-remove">🗑</button>
             </li>
             `;
         }
